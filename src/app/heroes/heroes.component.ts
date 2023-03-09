@@ -1,8 +1,9 @@
 import { Component,OnInit } from '@angular/core';
-import { Hero } from '../hero';
+import { Hero } from '../hero'; // 定義型別
 import { Apple } from '../apple';
 
-import { HEROES } from '../mock-heroes';
+// import { HEROES } from '../mock-heroes';
+import { HeroService } from '../hero.service'
 @Component({
   selector: 'app-heroes',  //  元件的 CSS 元素選擇器
   templateUrl: './heroes.component.html', // 元件範本檔案的位置。
@@ -10,15 +11,19 @@ import { HEROES } from '../mock-heroes';
 })
 
 export class HeroesComponent implements OnInit {
-  heroes = HEROES;
-
+  // heroes = HEROES;
+  heroes: Hero[] = [];
   selectedHero!: Hero;
 
-  constructor() { }
+  constructor(private heroService: HeroService) // 新增一個私有的 heroService 型別為 HeroService
+  { }
 
   ngOnInit(): void {
+    this.getHeroes();
   }
-
+  getHeroes(): void {
+    this.heroes = this.heroService.getHeroes();
+  }
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
