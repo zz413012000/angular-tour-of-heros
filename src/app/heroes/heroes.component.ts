@@ -12,7 +12,7 @@ import { MessageService } from '../message.service';
 })
 export class HeroesComponent implements OnInit {
   // heroes = HEROES;
-  selectedHero!: Hero; //
+  /*selectedHero!: Hero;*/ // 導覽到英雄詳情-HeroesComponent 中的英雄連結的章節中，刪除，因為沒有功能了
   heroes: Hero[] = [];
 
   // constructor(private heroService: HeroService) // 新增一個私有的 heroService 型別為 HeroService
@@ -24,10 +24,10 @@ export class HeroesComponent implements OnInit {
   // getHeroes(): void {
   //   this.heroes = this.heroService.getHeroes();
   // }
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
-  }
+  //onSelect(hero: Hero): void { // 導覽到英雄詳情-HeroesComponent 中的英雄連結的章節中，刪除，因為沒有功能了
+  //  this.selectedHero = hero;
+  //  this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
+  //}
   getHeroes(): void {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
